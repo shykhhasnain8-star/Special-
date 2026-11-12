@@ -1,0 +1,1737 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Miss Pretty ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --purple: #9275cf;
+  --pink: #f4a9c8;
+  --dark: #51416f;
+  --white: #fff;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--dark);
+  background: linear-gradient(135deg,
+    #eee5ff, #ffe6f0, #e4f2ff, #fff0df, #e5f8ed);
+  background-size: 300% 300%;
+  animation: bgMove 14s ease infinite;
+}
+
+@keyframes bgMove {
+  0%,100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+#floating {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.float {
+  position: absolute;
+  bottom: -40px;
+  opacity: .5;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-115vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg,#eee5ff,#ffe6f0,#e4f2ff);
+  transition: opacity .6s ease, visibility .6s;
+}
+
+.loader-heart {
+  font-size: 55px;
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.2); }
+}
+
+.loader-text {
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.loader-line {
+  width: 150px;
+  height: 5px;
+  background: #ffffffa8;
+  border-radius: 20px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.loader-line span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #a887df;
+  animation: loading 1.7s ease forwards;
+}
+
+@keyframes loading {
+  to { width: 100%; }
+}
+
+main {
+  width: 100%;
+  max-width: 520px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 25px 18px 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  text-align: center;
+  animation: appear .65s ease both;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(22px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.emoji {
+  font-size: 65px;
+  margin-bottom: 15px;
+  animation: gentle 3s ease-in-out infinite;
+}
+
+@keyframes gentle {
+  50% { transform: translateY(-8px) rotate(4deg); }
+}
+
+h1 {
+  font-size: clamp(27px, 7vw, 36px);
+  font-weight: 800;
+  line-height: 1.3;
+  color: #7057a4;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 23px;
+  line-height: 1.5;
+  color: #7057a4;
+  margin-bottom: 17px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #716381;
+}
+
+.small {
+  font-size: 12px;
+  margin-top: 15px;
+  opacity: .8;
+}
+
+button {
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+.primary {
+  margin-top: 27px;
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 18px;
+  background: linear-gradient(110deg,#a98ce0,#ef9fc2);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 9px 22px #a98ce04a;
+}
+
+.primary:hover {
+  box-shadow: 0 12px 28px #a98ce06b;
+  transform: translateY(-2px);
+}
+
+.rules {
+  text-align: left;
+  background: #ffffffa8;
+  border: 1px solid #ffffff;
+  border-radius: 22px;
+  padding: 20px;
+  margin-top: 22px;
+}
+
+.rules p {
+  margin: 9px 0;
+  font-size: 13px;
+}
+
+.rules strong {
+  color: #8b68c2;
+}
+
+.top-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.counter {
+  flex: 1;
+  background: #ffffffb8;
+  padding: 11px 6px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.counter.good { color: #399b77; }
+.counter.bad { color: #dc7194; }
+
+.progress-wrap {
+  height: 7px;
+  background: #ffffffa8;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg,#a98ce0,#ef9fc2);
+  border-radius: 20px;
+  transition: width .5s ease;
+}
+
+.question-number {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a17bc9;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.question-card {
+  background: #ffffffc9;
+  border: 1px solid #ffffff;
+  border-radius: 25px;
+  padding: 25px 18px;
+  box-shadow: 0 12px 35px #8770aa15;
+}
+
+.question-card h2 {
+  font-size: 20px;
+}
+
+.options {
+  display: grid;
+  gap: 11px;
+  margin-top: 22px;
+}
+
+.option {
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  color: #68577d;
+  border: 2px solid #eee5fa;
+  border-radius: 15px;
+  padding: 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.option:hover {
+  border-color: #b89ce6;
+  background: #faf6ff;
+}
+
+.option.selected {
+  border-color: #a98ce0;
+  background: #f3edff;
+}
+
+.option.correct {
+  border-color: #78c9a6;
+  background: #e9fff4;
+  color: #32845f;
+}
+
+.option.wrong {
+  border-color: #ed9bb3;
+  background: #fff0f4;
+  color: #c45c7c;
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.feedback {
+  min-height: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  border: 2px solid #eee5fa;
+  border-radius: 17px;
+  padding: 15px;
+  font-family: inherit;
+  font-size: 13px;
+  color: #5e4d75;
+  outline: none;
+  background: #fff;
+  margin-top: 18px;
+}
+
+textarea:focus {
+  border-color: #a98ce0;
+}
+
+.reward-letter {
+  font-size: 90px;
+  font-weight: 800;
+  color: #a17bc9;
+  text-shadow: 0 8px 20px #a17bc944;
+  animation: letterPop .7s cubic-bezier(.2,1.5,.5,1);
+}
+
+@keyframes letterPop {
+  from { transform: scale(.2) rotate(-25deg); opacity: 0; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.reward-box {
+  background: #ffffffc9;
+  border-radius: 25px;
+  border: 1px solid white;
+  padding: 28px 20px;
+}
+
+.note-box {
+  background: #ffffffd1;
+  border: 1px solid white;
+  border-radius: 25px;
+  padding: 25px 20px;
+  text-align: left;
+  box-shadow: 0 12px 35px #8770aa15;
+}
+
+.note-box p {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.note-name {
+  color: #a16fc9;
+  font-weight: 800;
+  font-size: 22px;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.footer {
+  margin-top: 25px;
+  font-size: 11px;
+  color: #9a87ad;
+}
+</style>
+</head>
+
+<body>
+
+<div id="floating"></div>
+
+<div id="loader">
+  <div class="loader-heart">💗</div>
+  <div class="loader-text">A LITTLE SURPRISE FOR YOU</div>
+  <div class="loader-line"><span></span></div>
+</div>
+
+<main>
+
+<!-- WELCOME -->
+<section class="screen active" id="welcome">
+  <div class="emoji">🎀</div>
+  <h1>Hey Pretty G!</h1>
+  <p>
+    Aapke liye kuch special hai<br>
+    Lekin pehle ek chhota sa kaam karna hoga
+  </p>
+  <p class="small">Ready for a little surprise? ♡</p>
+  <button class="primary" onclick="showScreen('rules')">
+    Let's Begin ✨
+  </button>
+</section>
+
+<!-- RULES -->
+<section class="screen" id="rules">
+  <div class="emoji">💌</div>
+  <h1>Chhoti si rules list!</h1>
+  <p>Bas kuch baatein yaad rakhni hain</p>
+
+  <div class="rules">
+    <p>♡ Aapse mere baare mein 7 sawaal pooche jayenge</p>
+    <p>♡ Har sawaal ke 4 ya usse zyada options honge</p>
+    <p>♡ Har sawaal ka sirf ek sahi jawab hoga</p>
+    <p>♡ Sahi ho ya ghalat, reward letter zaroor milega</p>
+    <p>♡ Ek sawaal mein aapko apna jawab khud likhna hoga</p>
+    <p>♡ Har jawab ke baad apna reward claim karna mat bhooliyega</p>
+    <p>♡ Aur haan, end tak zaroor jaana! 👀</p>
+  </div>
+
+  <button class="primary" onclick="startQuiz()">Chalo shuru karein ♡</button>
+</section>
+
+<!-- QUIZ -->
+<section class="screen" id="quiz">
+  <div class="top-info">
+    <div class="counter good">✓ Sahi: <span id="correctCount">0</span></div>
+    <div class="counter bad">✕ Ghalat: <span id="wrongCount">0</span></div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress" id="progress"></div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-number" id="qNumber">QUESTION 01 / 07</div>
+    <h2 id="questionText"></h2>
+    <div class="options" id="options"></div>
+    <textarea id="writtenAnswer" class="hidden"
+      placeholder="Yahan apna jawab likhiye..."></textarea>
+    <div class="feedback" id="feedback"></div>
+    <button class="primary hidden" id="doneButton" onclick="submitWrittenAnswer()">Done ♡</button>
+  </div>
+</section>
+
+<!-- REWARD -->
+<section class="screen" id="reward">
+  <div class="emoji">🎁</div>
+  <div class="reward-box">
+    <p>YOUR REWARD LETTER</p>
+    <div class="reward-letter" id="rewardLetter">A</div>
+    <h2>Ek letter aapka hua!</h2>
+    <p id="rewardMessage">
+      Question to aise hi hai ke aap kitna jaante ho mujhe
+      baqi nichey apna reward claim karlo ♡
+    </p>
+    <button class="primary" id="nextButton" onclick="claimReward()">
+      Claim & Next Question ♡
+    </button>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="screen" id="final">
+  <div class="emoji">🌷</div>
+  <h1>For Miss Pretty</h1>
+  <p>Ab aapke liye ek chhota sa note hai</p>
+  <button class="primary" onclick="openNote()">Open Note 💌</button>
+
+  <div class="note-box hidden" id="noteBox">
+    <p>
+      Dekho, main aapko apna naam isi liye nahi bata raha tha
+      Mera maqsad aapko tang karna bhi yahi tha ke main apni pehchaan na bataun
+      Agar pehle hi bata deta, toh aapko ye surprise kaise deta?
+    </p>
+    <p>
+      Aapne mere baare mein jo jawab diye hain, unse pata chalta hai
+      ke aap mujhe kitna jaanti hain
+    </p>
+    <p>
+      Aur haan, ab bataiye…
+    </p>
+    <div class="note-name">Meri AREESHA G ka naam kaisa hai? ❤️</div>
+  </div>
+</section>
+
+</main>
+
+<script>
+const questions = [
+  {
+    text: "Hasnain ke liye mohabbat mein sabse zaroori kya hai?",
+    options: [
+      "A) Khoobsurti",
+      "B) Imaandari aur izzat",
+      "C) Gifts aur surprises",
+      "D) Har waqt baat karna"
+    ],
+    answer: 1
+  },
+  {
+    text: "Hasnain ko apni favourite person se sabse zyada kya chahiye?",
+    options: [
+      "A) Attention",
+      "B) Waqt",
+      "C) Sachha pyaar",
+      "D) Gifts"
+    ],
+    answer: 2
+  },
+  {
+    text: "Hasnain ke liye sabse khoobsurat romantic moment konsa hai?",
+    written: true
+  },
+  {
+    text: "Hasnain ko apni favourite person ki konsi baat sabse zyada pasand hai?",
+    options: [
+      "A) Uski khoobsurti",
+      "B) Uska saaf dil",
+      "C) Uski awaaz",
+      "D) Uska dressing style"
+    ],
+    answer: 1
+  },
+  {
+    text: "Hasnain ko apni favourite person ki kaunsi quality sabse zyada attract karti hai?",
+    options: [
+      "A) Saadgi",
+      "B) Haya",
+      "C) Wafadari",
+      "D) Achha nature",
+      "E) Masoomiyat",
+      "F) Narmi",
+      "G) Muskurahat",
+      "H) Samajhdari",
+      "I) Saaf dil",
+      "J) Izzat dena"
+    ],
+    answer: 8
+  },
+  {
+    text: "Hasnain apni favourite person se kis cheez ki umeed rakhta hai?",
+    options: [
+      "A) Hamesha sach bolna",
+      "B) Mushkil waqt mein saath dena",
+      "C) Uski feelings samajhna",
+      "D) Har haal mein izzat karna"
+    ],
+    answer: 2
+  },
+  {
+    text: "Kya Hasnain ke paas itna dimaag hai ke woh ye questions likh sake? 😂",
+    options: [
+      "A) Bilkul, Einstein hai",
+      "B) Haan, kabhi kabhi",
+      "C) Nahi, ChatGPT se likhwaye hain",
+      "D) Dimaag hai, bas istemal nahi karta",
+      "E) Itna bhi genius nahi hai",
+      "F) Khud ko bohat samajhdaar samajhta hai",
+      "G) Thora dimaag, thori AI",
+      "H) Sawal achhe hain, dimaag kisi aur ka hai",
+      "I) Hasnain aur dimaag? Dono ka door door tak rishta nahi",
+      "J) Is baar toh AI ne izzat bacha li 😂"
+    ],
+    answer: 6
+  }
+];
+
+const rewardLetters = ["A","R","E","E","S","H","A"];
+
+let current = 0;
+let correct = 0;
+let wrong = 0;
+let answered = false;
+
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(s => {
+    s.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+}
+
+function startQuiz() {
+  current = 0;
+  correct = 0;
+  wrong = 0;
+  updateCounters();
+  showScreen("quiz");
+  renderQuestion();
+}
+
+function updateCounters() {
+  document.getElementById("correctCount").textContent = correct;
+  document.getElementById("wrongCount").textContent = wrong;
+}
+
+function renderQuestion() {
+  answered = false;
+  const q = questions[current];
+
+  document.getElementById("qNumber").textContent =
+    `QUESTION ${String(current + 1).padStart(2,"0")} / 07`;
+
+  document.getElementById("questionText").textContent = q.text;
+  document.getElementById("progress").style.width =
+    `${(current / questions.length) * 100}%`;
+
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("options").innerHTML = "";
+
+  const input = document.getElementById("writtenAnswer");
+  const done = document.getElementById("doneButton");
+  input.value = "";
+
+  if (q.written) {
+    input.classList.remove("hidden");
+    done.classList.remove("hidden");
+    return;
+  }
+
+  input.classList.add("hidden");
+  done.classList.add("hidden");
+
+  q.options.forEach((option,index) => {
+    const btn = document.createElement("button");
+    btn.className = "option";
+    btn.textContent = option;
+    btn.onclick = () => selectAnswer(index,btn);
+    document.getElementById("options").appendChild(btn);
+  });
+}
+
+function selectAnswer(index, selectedButton) {
+  if (answered) return;
+  answered = true;
+
+  const q = questions[current];
+  const buttons = document.querySelectorAll(".option");
+
+  buttons.forEach(btn => btn.disabled = true);
+
+  if (index === q.answer) {
+    correct++;
+    selectedButton.classList.add("correct");
+    document.getElementById("feedback").textContent = "Bilkul sahi jawab! ♡";
+    document.getElementById("feedback").style.color = "#399b77";
+  } else {
+    wrong++;
+    selectedButton.classList.add("wrong");
+    buttons[q.answer].classList.add("correct");
+    document.getElementById("feedback").textContent = "Oops! Is baar jawab sahi nahi tha ♡";
+    document.getElementById("feedback").style.color = "#dc7194";
+  }
+
+  updateCounters();
+  setTimeout(showReward, 850);
+}
+
+function submitWrittenAnswer() {
+  const value = document.getElementById("writtenAnswer").value.trim();
+
+  if (!value) {
+    document.getElementById("feedback").textContent =
+      "Pehle apna jawab toh likhiye ♡";
+    document.getElementById("feedback").style.color = "#dc7194";
+    return;
+  }
+
+  showReward();
+}
+
+function showReward() {
+  showScreen("reward");
+
+  document.getElementById("rewardLetter").textContent =
+    rewardLetters[current];
+
+  document.getElementById("nextButton").textContent =
+    current === 6 ? "Claim Reward & Open Note ♡" : "Claim & Next Question ♡";
+}
+
+function claimReward() {
+  current++;
+
+  if (current >= questions.length) {
+    document.getElementById("progress").style.width = "100%";
+    showScreen("final");
+    return;
+  }
+
+  showScreen("quiz");
+  renderQuestion();
+}
+
+function openNote() {
+  const note = document.getElementById("noteBox");
+  note.classList.remove("hidden");
+  note.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+/* Floating decorations */
+const decorations = ["♡","♥","✦","✧","🌸","💗"];
+
+function createFloat() {
+  const el = document.createElement("span");
+  el.className = "float";
+  el.textContent = decorations[
+    Math.floor(Math.random() * decorations.length)
+  ];
+
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.fontSize = (12 + Math.random() * 18) + "px";
+  el.style.animationDuration = (7 + Math.random() * 7) + "s";
+
+  document.getElementById("floating").appendChild(el);
+
+  setTimeout(() => el.remove(), 14500);
+}
+
+setInterval(createFloat, 650);
+
+/* Loading screen */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const loader = document.getElementById("loader");
+    loader.style.opacity = "0";
+    loader.style.visibility = "hidden";
+  }, 1900);
+});
+</script>
+
+</body>
+</html>
+<style>
+/* Bolder typography */
+body {
+  font-weight: 500;
+}
+
+p {
+  font-weight: 500;
+}
+
+h1, h2 {
+  font-weight: 800;
+}
+
+button, .option {
+  font-weight: 700;
+}
+
+.counter, .question-number {
+  font-weight: 700;
+}
+
+/* Between-question loading */
+#transitionLoader {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: linear-gradient(135deg,#eee5ff,#ffe6f0,#e4f2ff);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#transitionLoader.show {
+  display: flex;
+  animation: appear .35s ease both;
+}
+
+.transition-heart {
+  font-size: 55px;
+  animation: heartbeat .8s infinite;
+}
+
+.transition-text {
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #7057a4;
+  letter-spacing: 1px;
+}
+
+/* Special note paper */
+#noteBox {
+  background: #fff9eb;
+  border: 2px solid #e8d8b7;
+  border-radius: 8px 24px 8px 24px;
+  padding: 30px 23px;
+  margin-top: 25px;
+  box-shadow: 0 12px 30px #78613c20;
+  position: relative;
+  text-align: left;
+  animation: noteReveal .8s ease both;
+}
+
+#noteBox::before {
+  content: "♡  A LITTLE NOTE FOR YOU  ♡";
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #b17b9d;
+  margin-bottom: 25px;
+}
+
+#noteBox p {
+  color: #68516a;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 2.1;
+  margin-bottom: 18px;
+}
+
+#noteBox .note-name {
+  border-top: 1px dashed #d9b9ca;
+  padding-top: 20px;
+  margin-top: 20px;
+  color: #a15b91;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+@keyframes noteReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px) rotate(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+</style><script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --purple:#8b70c9;
+  --pink:#f4a9c5;
+  --blue:#a9d7f5;
+  --mint:#b8e8d3;
+  --peach:#ffd2b8;
+  --cream:#fff8ed;
+  --ink:#514568;
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body {
+  min-height:100vh;
+  font-family:'Poppins',sans-serif;
+  font-weight:500;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 10% 15%,#ffe0ed 0,transparent 30%),
+    radial-gradient(circle at 90% 20%,#d9efff 0,transparent 32%),
+    radial-gradient(circle at 20% 90%,#dff8e9 0,transparent 30%),
+    linear-gradient(135deg,#f4eaff,#fff3e8,#eaf6ff);
+  overflow-x:hidden;
+}
+
+button {
+  font-family:inherit;
+  cursor:pointer;
+  border:none;
+  -webkit-tap-highlight-color:transparent;
+}
+
+#decorations {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+
+.float {
+  position:absolute;
+  bottom:-35px;
+  animation:floatUp linear forwards;
+  opacity:.65;
+  user-select:none;
+}
+
+@keyframes floatUp {
+  to {
+    transform:translateY(-110vh) rotate(35deg);
+    opacity:0;
+  }
+}
+
+.screen {
+  display:none;
+  min-height:100vh;
+  width:100%;
+  padding:25px 16px;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  z-index:1;
+  animation:screenIn .55s ease both;
+}
+
+.screen.active {
+  display:flex;
+}
+
+@keyframes screenIn {
+  from {opacity:0;transform:translateY(12px) scale(.985)}
+  to {opacity:1;transform:translateY(0) scale(1)}
+}
+
+.card {
+  width:min(100%,490px);
+  padding:32px 25px;
+  border-radius:30px;
+  text-align:center;
+  background:rgba(255,255,255,.83);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:0 18px 55px rgba(112,85,151,.13);
+}
+
+.small-label {
+  display:inline-block;
+  padding:8px 17px;
+  border-radius:30px;
+  background:#f2eaff;
+  color:#8064b8;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
+  margin-bottom:18px;
+}
+
+h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(30px,8vw,43px);
+  line-height:1.2;
+  color:#7658a9;
+  margin-bottom:15px;
+  font-weight:800;
+}
+
+h2 {
+  font-size:22px;
+  line-height:1.45;
+  font-weight:700;
+  margin-bottom:17px;
+}
+
+p {
+  font-size:14px;
+  line-height:1.9;
+  font-weight:500;
+  color:#756b83;
+}
+
+.main-btn {
+  margin-top:25px;
+  padding:14px 27px;
+  min-width:190px;
+  border-radius:40px;
+  color:white;
+  font-size:14px;
+  font-weight:700;
+  background:linear-gradient(110deg,#a17bd5,#e79fc2);
+  box-shadow:0 9px 22px rgba(156,112,193,.25);
+  transition:.25s;
+}
+
+.main-btn:active {
+  transform:scale(.96);
+}
+
+.main-btn:hover {
+  transform:translateY(-2px);
+}
+
+.secondary-btn {
+  background:linear-gradient(110deg,#91c9e9,#9bd9c1);
+  color:#385d68;
+}
+
+.rules {
+  text-align:left;
+  margin:22px 0 5px;
+  padding:18px;
+  border-radius:19px;
+  background:#fbf7ff;
+  font-size:13px;
+  line-height:2;
+  color:#71647f;
+  font-weight:500;
+}
+
+.rules strong {
+  color:#7658a9;
+  font-weight:700;
+}
+
+.counter-row {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:22px;
+}
+
+.counter {
+  padding:9px 16px;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.correct-counter {
+  background:#e0f6e9;
+  color:#39865c;
+}
+
+.wrong-counter {
+  background:#ffe7ed;
+  color:#bf6680;
+}
+
+.progress-track {
+  height:7px;
+  background:#eee7f7;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:22px;
+}
+
+.progress-fill {
+  height:100%;
+  width:0;
+  border-radius:20px;
+  background:linear-gradient(90deg,#a98cdd,#f2a9c8);
+  transition:width .4s ease;
+}
+
+.question-number {
+  font-size:12px;
+  color:#a18abf;
+  font-weight:700;
+  letter-spacing:1px;
+  margin-bottom:12px;
+}
+
+.question-title {
+  font-size:19px;
+  font-weight:700;
+  line-height:1.6;
+  margin-bottom:22px;
+  color:#5d4b77;
+}
+
+.options {
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+}
+
+.option {
+  width:100%;
+  text-align:left;
+  padding:14px 16px;
+  border-radius:16px;
+  background:#f7f1ff;
+  border:1.5px solid #eee3fa;
+  color:#665779;
+  font-size:13px;
+  font-weight:600;
+  line-height:1.5;
+  transition:.2s;
+}
+
+.option:hover {
+  background:#efe5ff;
+  border-color:#cbb5ed;
+  transform:translateY(-1px);
+}
+
+.option:disabled {
+  cursor:default;
+  opacity:.8;
+}
+
+.option.correct {
+  background:#e0f6e9;
+  border-color:#8bd2a7;
+  color:#34764f;
+}
+
+.option.incorrect {
+  background:#ffe8ed;
+  border-color:#e9a4b6;
+  color:#a94f69;
+}
+
+textarea {
+  width:100%;
+  min-height:125px;
+  resize:vertical;
+  padding:15px;
+  border:1.5px solid #e5d7f4;
+  border-radius:17px;
+  outline:none;
+  background:#fcf9ff;
+  font-family:inherit;
+  font-size:14px;
+  font-weight:500;
+  color:#554667;
+}
+
+textarea:focus {
+  border-color:#a88bd2;
+  box-shadow:0 0 0 3px #eee5fa;
+}
+
+.reward-letter {
+  width:105px;
+  height:105px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:15px auto 22px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#f8c6dc,#c9b6f0,#bce4f6);
+  color:white;
+  font-family:'Playfair Display',serif;
+  font-size:62px;
+  font-weight:800;
+  box-shadow:0 12px 28px rgba(159,126,195,.22);
+  animation:letterPop .65s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes letterPop {
+  0% {transform:scale(.3) rotate(-15deg);opacity:0}
+  75% {transform:scale(1.12) rotate(5deg)}
+  100% {transform:scale(1);opacity:1}
+}
+
+.reward-message {
+  font-size:13px;
+  line-height:1.9;
+  color:#796b88;
+  font-weight:600;
+  margin:10px 0;
+}
+
+.final-title {
+  font-family:'Playfair Display',serif;
+  font-size:35px;
+  color:#8667b8;
+  margin-bottom:12px;
+}
+
+.letter-paper {
+  margin-top:23px;
+  padding:25px 21px;
+  text-align:left;
+  position:relative;
+  overflow:hidden;
+  border-radius:8px 8px 17px 8px;
+  border:1px solid #ead9bd;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(255,216,225,.35),transparent 35%),
+    repeating-linear-gradient(transparent 0px,transparent 31px,rgba(174,147,183,.12) 32px),
+    #fffaf0;
+  box-shadow:0 12px 30px rgba(104,77,117,.15);
+}
+
+.letter-paper::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:5px;
+  height:100%;
+  background:linear-gradient(#e9a9c7,#bba5e5,#a9d9e9);
+}
+
+.letter-heading {
+  font-family:'Playfair Display',serif;
+  color:#9a6da7;
+  font-size:23px;
+  font-weight:800;
+  text-align:center;
+  margin-bottom:18px;
+}
+
+.letter-text {
+  font-family:'Playfair Display',serif;
+  color:#66516e;
+  font-size:15px;
+  font-weight:700;
+  line-height:2.05;
+  white-space:pre-line;
+}
+
+.letter-sign {
+  margin-top:22px;
+  text-align:right;
+  font-family:'Playfair Display',serif;
+  font-size:21px;
+  color:#a16f9d;
+  font-weight:800;
+}
+
+.name-highlight {
+  display:inline-block;
+  color:#a35d91;
+  font-weight:800;
+  letter-spacing:2px;
+  font-size:20px;
+}
+
+/* Beautiful loading animation */
+#introLoader,
+#transitionLoader {
+  position:fixed;
+  inset:0;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:
+    radial-gradient(circle at 15% 15%,#ffe0ef,transparent 35%),
+    radial-gradient(circle at 85% 20%,#d8efff,transparent 35%),
+    radial-gradient(circle at 50% 90%,#e1f8e9,transparent 40%),
+    #f7efff;
+  transition:opacity .45s ease;
+}
+
+#transitionLoader {
+  display:none;
+  z-index:30;
+}
+
+.loader-card {
+  width:min(100%,340px);
+  padding:34px 24px;
+  text-align:center;
+  border-radius:28px;
+  background:rgba(255,255,255,.85);
+  border:1px solid white;
+  box-shadow:0 18px 55px rgba(112,85,151,.14);
+  animation:screenIn .5s ease both;
+}
+
+.loader-flower {
+  font-size:43px;
+  display:inline-block;
+  animation:loaderSpin 3s linear infinite;
+}
+
+@keyframes loaderSpin {
+  to {transform:rotate(360deg)}
+}
+
+.loader-title {
+  margin:17px 0 8px;
+  font-family:'Playfair Display',serif;
+  font-size:25px;
+  font-weight:800;
+  color:#8062ad;
+}
+
+.loader-subtitle {
+  font-size:12px;
+  color:#91829e;
+  font-weight:600;
+}
+
+.loader-dots {
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:20px;
+}
+
+.loader-dots span {
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#c29ce0;
+  animation:dotBounce .8s infinite alternate;
+}
+
+.loader-dots span:nth-child(2) {
+  animation-delay:.2s;
+  background:#efaac8;
+}
+
+.loader-dots span:nth-child(3) {
+  animation-delay:.4s;
+  background:#9bcfe9;
+}
+
+@keyframes dotBounce {
+  to {transform:translateY(-9px);opacity:.5}
+}
+
+@media(max-width:380px) {
+  .card {padding:27px 18px}
+  .question-title {font-size:17px}
+  .letter-text {font-size:14px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="decorations"></div>
+
+<div id="introLoader">
+  <div class="loader-card">
+    <div class="loader-flower">✿</div>
+    <div class="loader-title">Preparing a Little Surprise</div>
+    <div class="loader-subtitle">Something special is waiting for you...</div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+</div>
+
+<div id="transitionLoader">
+  <div class="loader-card">
+    <div class="loader-flower">❀</div>
+    <div class="loader-title">A Little Moment...</div>
+    <div class="loader-subtitle">Your next surprise is getting ready</div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+</div>
+
+<!-- Welcome -->
+<section class="screen active" id="welcomeScreen">
+  <div class="card">
+    <div class="small-label">A LITTLE SURPRISE FOR YOU</div>
+    <h1>Hey Pretty G!</h1>
+    <p>I've prepared something a little different for you<br>Ready to begin?</p>
+    <button class="main-btn" onclick="showScreen('rulesScreen')">Let's Begin ✨</button>
+  </div>
+</section>
+
+<!-- Rules -->
+<section class="screen" id="rulesScreen">
+  <div class="card">
+    <div class="small-label">BEFORE WE BEGIN</div>
+    <h1>Little Rules</h1>
+    <div class="rules">
+      <strong>01</strong> Total 7 questions honge<br>
+      <strong>02</strong> Har question ka jawab soch samajh kar dena<br>
+      <strong>03</strong> Kuch answers sahi honge aur kuch galat bhi ho sakte hain<br>
+      <strong>04</strong> Har question ke baad aapko ek reward letter milega<br>
+      <strong>05</strong> Aakhir mein un letters se ek naam banana hoga<br><br>
+      Bas enjoy kijiye aur dekhte hain aap Hasnain ko kitna jaanti hain!
+    </div>
+    <button class="main-btn" onclick="startQuiz()">I'm Ready 💗</button>
+  </div>
+</section>
+
+<!-- Questions -->
+<section class="screen" id="quizScreen">
+  <div class="card">
+    <div class="counter-row">
+      <div class="counter correct-counter">✓ Correct: <span id="correctCount">0</span></div>
+      <div class="counter wrong-counter">✕ Wrong: <span id="wrongCount">0</span></div>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="question-number" id="questionNumber">QUESTION 1 OF 7</div>
+    <div class="question-title" id="questionTitle"></div>
+    <div class="options" id="optionsContainer"></div>
+
+    <div id="writtenContainer" style="display:none">
+      <textarea id="writtenAnswer" placeholder="Apna jawab yahan likhiye..."></textarea>
+      <button class="main-btn" onclick="submitWrittenAnswer()">Done ✓</button>
+    </div>
+  </div>
+</section>
+
+<!-- Reward -->
+<section class="screen" id="rewardScreen">
+  <div class="card">
+    <div class="small-label">YOUR REWARD</div>
+    <h1>You've Earned It!</h1>
+    <div class="reward-letter" id="rewardLetter">A</div>
+    <p class="reward-message">
+      Question to aise hi hai ke aap kitna jaanti hain mujhe
+      baqi nichey apna reward claim karlo
+    </p>
+    <button class="main-btn" onclick="claimReward()" id="claimButton">Claim & Next Question →</button>
+  </div>
+</section>
+
+<!-- Final -->
+<section class="screen" id="finalScreen">
+  <div class="card">
+    <div class="small-label">ALL REWARDS COLLECTED</div>
+    <div class="final-title">For Miss Pretty</div>
+    <p>You've reached the final surprise</p>
+
+    <div id="noteBox" style="display:none">
+      <div class="letter-paper">
+        <div class="letter-heading">A Little Note For You</div>
+
+        <div class="letter-text">Dekho, agar main aapko unka naam bata deta, toh ye surprise aapko kaise deta? Ye muskurahat aapke chehre par kaise laata?
+
+Lekin mujhe nahi pata ke aapko ye chhota sa gift kaisa laga
+
+Khair, ab ye bataiye...
+
+<strong>Meri <span class="name-highlight">AREESHA</span> ka naam kaisa laga?</strong> ❤️</div>
+
+        <div class="letter-sign">— With respect</div>
+      </div>
+    </div>
+
+    <button class="main-btn" id="openNoteButton" onclick="openNote()">Open Note 💌</button>
+  </div>
+</section>
+
+<script>
+const questions = [
+  {
+    question:"Hasnain ke liye mohabbat mein sabse zaroori kya hai?",
+    options:["Khoobsurti","Imaandari aur izzat","Gifts aur surprises","Har waqt baat karna"],
+    answer:1
+  },
+  {
+    question:"Hasnain ko apni favourite person se sabse zyada kya chahiye?",
+    options:["Attention","Waqt","Sachha pyaar","Gifts"],
+    answer:2
+  },
+  {
+    question:"Hasnain ke liye sabse khoobsurat romantic moment konsa hai?",
+    written:true
+  },
+  {
+    question:"Hasnain ko aapki konsi baat sabse zyada pasand hai?",
+    options:["Aapki khoobsurti","Aapka saaf dil","Aapki awaaz","Aapka dressing style"],
+    answer:1
+  },
+  {
+    question:"Hasnain ko aapki kaunsi quality sabse zyada attract karti hai?",
+    options:[
+      "Saadgi",
+      "Haya",
+      "Wafadari",
+      "Achha nature",
+      "Masoomiyat",
+      "Narmi",
+      "Muskurahat",
+      "Samajhdari",
+      "Saaf dil",
+      "Izzat dena"
+    ],
+    answer:8
+  },
+  {
+    question:"Hasnain aapse kis cheez ki umeed rakhta hai?",
+    options:[
+      "Hamesha sach bolna",
+      "Mushkil waqt mein saath dena",
+      "Uski feelings samajhna",
+      "Har haal mein izzat karna"
+    ],
+    answer:2
+  },
+  {
+    question:"Kya Hasnain ke paas itna dimaag hai ke woh ye questions likh sake? 😂",
+    options:[
+      "A. Bilkul, Einstein hai",
+      "B. Haan, kabhi kabhi",
+      "C. Nahi, ChatGPT se likhwaye hain",
+      "D. Dimaag hai, bas istemal nahi karta",
+      "E. Itna bhi genius nahi hai",
+      "F. Khud ko bohat samajhdaar samajhta hai",
+      "G. Thora dimaag, thori AI",
+      "H. Sawal achhe hain, dimaag kisi aur ka hai",
+      "I. Hasnain aur dimaag? Dono ka door door tak rishta nahi",
+      "J. Is baar toh AI ne izzat bacha li 😂"
+    ],
+    answer:6
+  }
+];
+
+const rewardLetters = ["A","R","E","E","S","H","A"];
+
+let currentQuestion = 0;
+let correct = 0;
+let wrong = 0;
+let selectedAnswer = false;
+let answerLocked = false;
+
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+}
+
+function startQuiz() {
+  currentQuestion = 0;
+  correct = 0;
+  wrong = 0;
+  updateCounters();
+  loadQuestion();
+  showScreen("quizScreen");
+}
+
+function updateCounters() {
+  document.getElementById("correctCount").textContent = correct;
+  document.getElementById("wrongCount").textContent = wrong;
+}
+
+function loadQuestion() {
+  selectedAnswer = false;
+  answerLocked = false;
+
+  const q = questions[currentQuestion];
+
+  document.getElementById("questionNumber").textContent =
+    `QUESTION ${currentQuestion + 1} OF ${questions.length}`;
+
+  document.getElementById("questionTitle").textContent = q.question;
+
+  document.getElementById("progressFill").style.width =
+    `${((currentQuestion + 1) / questions.length) * 100}%`;
+
+  const optionsContainer = document.getElementById("optionsContainer");
+  const writtenContainer = document.getElementById("writtenContainer");
+
+  optionsContainer.innerHTML = "";
+  document.getElementById("writtenAnswer").value = "";
+
+  if (q.written) {
+    optionsContainer.style.display = "none";
+    writtenContainer.style.display = "block";
+  } else {
+    optionsContainer.style.display = "flex";
+    writtenContainer.style.display = "none";
+
+    q.options.forEach((option,index) => {
+      const button = document.createElement("button");
+      button.className = "option";
+      button.textContent = option;
+      button.onclick = () => selectAnswer(index,button);
+      optionsContainer.appendChild(button);
+    });
+  }
+}
+
+/* Show a 3-second loading after every answer */
+function showAnswerLoading() {
+  if (answerLocked) return;
+  answerLocked = true;
+
+  const loader = document.getElementById("transitionLoader");
+  loader.style.display = "flex";
+
+  setTimeout(() => {
+    loader.style.display = "none";
+    showReward();
+  },3000);
+}
+
+function selectAnswer(index, clickedButton) {
+  if (selectedAnswer || answerLocked) return;
+
+  selectedAnswer = true;
+
+  const q = questions[currentQuestion];
+  const allOptions = document.querySelectorAll(".option");
+  const isCorrect = index === q.answer;
+
+  if (isCorrect) {
+    correct++;
+    clickedButton.classList.add("correct");
+  } else {
+    wrong++;
+    clickedButton.classList.add("incorrect");
+    allOptions[q.answer].classList.add("correct");
+  }
+
+  allOptions.forEach(button => button.disabled = true);
+  updateCounters();
+
+  showAnswerLoading();
+}
+
+function submitWrittenAnswer() {
+  if (answerLocked) return;
+
+  const answer = document.getElementById("writtenAnswer").value.trim();
+
+  if (!answer) {
+    alert("Pehle apna jawab likhiye 😊");
+    return;
+  }
+
+  showAnswerLoading();
+}
+
+function showReward() {
+  document.getElementById("rewardLetter").textContent =
+    rewardLetters[currentQuestion];
+
+  const button = document.getElementById("claimButton");
+
+  button.textContent =
+    currentQuestion === questions.length - 1
+      ? "Claim Your Final Reward ✨"
+      : "Claim & Next Question →";
+
+  showScreen("rewardScreen");
+}
+
+function claimReward() {
+  const button = document.getElementById("claimButton");
+
+  if (button.disabled) return;
+  button.disabled = true;
+
+  const loader = document.getElementById("transitionLoader");
+  loader.style.display = "flex";
+
+  setTimeout(() => {
+    loader.style.display = "none";
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+      loadQuestion();
+      showScreen("quizScreen");
+    } else {
+      showScreen("finalScreen");
+    }
+
+    button.disabled = false;
+  },3000);
+}
+
+function openNote() {
+  document.getElementById("noteBox").style.display = "block";
+  document.getElementById("openNoteButton").style.display = "none";
+}
+
+/* Floating decorations */
+const decorationSymbols = ["♡","✿","✧","♥","❀","⋆"];
+const decorationArea = document.getElementById("decorations");
+
+function createFloat() {
+  const item = document.createElement("span");
+  item.className = "float";
+  item.textContent =
+    decorationSymbols[Math.floor(Math.random() * decorationSymbols.length)];
+
+  item.style.left = Math.random() * 100 + "vw";
+  item.style.fontSize = (13 + Math.random() * 16) + "px";
+  item.style.color = ["#d99dbd","#a995d6","#9ac9e6","#9dcfb6"][
+    Math.floor(Math.random() * 4)
+  ];
+  item.style.animationDuration = (7 + Math.random() * 6) + "s";
+
+  decorationArea.appendChild(item);
+
+  setTimeout(() => item.remove(),13000);
+}
+
+setInterval(createFloat,650);
+
+/* Initial loading */
+window.addEventListener("load",() => {
+  setTimeout(() => {
+    const loader = document.getElementById("introLoader");
+    loader.style.opacity = "0";
+
+    setTimeout(() => {
+      loader.style.display = "none";
+    },450);
+  },1900);
+});
+</script>
+
+</body>
+</html>
+
+</script>
